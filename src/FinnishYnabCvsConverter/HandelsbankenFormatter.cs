@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Finnish_YNAB_Converter
+namespace FinnishYnabCvsConverter
 {
     public class HandelsbankenFormatter : IBankFormatter
     {
-        public static ILog Log = LogManager.GetLogger("HandelsbankenProcessor");
+        public static ILog Log;
+
+        public HandelsbankenFormatter()
+        {
+            Log = LogManager.GetLogger(this.GetType());
+        }
 
         public void Format(string path, string outputPath)
         {

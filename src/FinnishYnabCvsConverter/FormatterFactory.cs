@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Finnish_YNAB_Converter
+namespace FinnishYnabCvsConverter
 {
     public static class FormatterFactory
     {
         public static IBankFormatter CreateBankFormatter(string bankname)
         {
-            if (String.Equals(bankname, "handelsbanken", StringComparison.OrdinalIgnoreCase))
+            if (bankname.Equals("handelsbanken", StringComparison.OrdinalIgnoreCase))
             {
                 return new HandelsbankenFormatter();
             }

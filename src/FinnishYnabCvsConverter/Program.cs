@@ -2,7 +2,7 @@
 using log4net;
 using System;
 
-namespace Finnish_YNAB_Converter
+namespace FinnishYnabCvsConverter
 {
     internal class Program
     {

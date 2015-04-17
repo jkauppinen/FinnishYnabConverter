@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 using System.Text;
 
-namespace Finnish_YNAB_Converter
+namespace FinnishYnabCvsConverter
 {
     public class Options
     {

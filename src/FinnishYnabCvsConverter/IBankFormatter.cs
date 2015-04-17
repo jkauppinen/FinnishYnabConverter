@@ -1,4 +1,4 @@
-﻿namespace Finnish_YNAB_Converter
+﻿namespace FinnishYnabCvsConverter
 {
     public interface IBankFormatter
     {

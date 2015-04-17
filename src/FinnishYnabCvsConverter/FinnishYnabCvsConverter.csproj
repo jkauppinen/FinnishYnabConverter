@@ -7,8 +7,8 @@
     <ProjectGuid>{0FA22C95-8E5E-4617-913E-9C2CF9AEF31A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Finnish_YNAB_Converter</RootNamespace>
-    <AssemblyName>Finnish-YNAB-Converter</AssemblyName>
+    <RootNamespace>FinnishYnabCvsConverter</RootNamespace>
+    <AssemblyName>FinnishYnabCvsConverter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
