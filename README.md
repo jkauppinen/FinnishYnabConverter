@@ -1,4 +1,4 @@
-finnish-ynab-csv-converter
+FinnishYnabCvsConverter
 ==========================
 
 Converts Finnish banks csv transaction files to YNAB compatible format. 
