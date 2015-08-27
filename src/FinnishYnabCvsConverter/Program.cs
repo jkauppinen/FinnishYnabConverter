@@ -10,14 +10,23 @@ namespace FinnishYnabCvsConverter
         {
             log4net.Config.BasicConfigurator.Configure();
             ILog Log = LogManager.GetLogger(System.Reflection.MethodInfo.GetCurrentMethod().DeclaringType.FullName);
-            var options = new Options();
-            var parser = new Parser();
-            if (parser.ParseArguments(args, options))
+            try
             {
-                var formatter = FormatterFactory.CreateBankFormatter(options.BankName);
-                formatter.Format(options.InputFile, options.OutputDirectory);
+                Options options = new Options();
+                Parser parser = new Parser();
+                if (parser.ParseArguments(args, options))
+                {
+                    IBankFormatter formatter = FormatterFactory.CreateBankFormatter(options.BankName);
+                    formatter.Format(options.InputFile, options.OutputDirectory);
+                }
+                Console.WriteLine("Transactions have been formatted");
             }
-            Console.WriteLine("Transactions have been formatted");
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+            }
+
+            Console.WriteLine("Press any key to exit...");
             Console.Read();
         }
     }
