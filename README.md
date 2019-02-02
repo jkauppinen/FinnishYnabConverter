@@ -5,12 +5,22 @@ Converts Finnish banks transaction files to YNAB compatible format.
 
 * Verified to work with following banks formats
   * Handelsbanken csv format
- 
 
-How to use
+Target framework: .NET Core 2.2
+
+
+Building
 ==========================
 
-Works on windows and linux distros.
+`git clone git@github.com:jkauppinen/FinnishYnabConverter.git`
+
+`cd FinnishYnabConverter`
+
+`dotnet build FinnishYnabConverter.sln`
+
+Arguments
+==========================
+
 
 | Argument| Description| 
 |-------------|-------------|
