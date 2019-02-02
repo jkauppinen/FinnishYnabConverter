@@ -18,7 +18,7 @@ Building
 
 `dotnet build FinnishYnabConverter.sln`
 
-Arguments
+CLI arguments
 ==========================
 
 
