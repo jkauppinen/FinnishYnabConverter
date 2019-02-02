@@ -18,6 +18,11 @@ Building
 
 `dotnet build FinnishYnabConverter.sln`
 
+Creating executable on linux 
+
+`dotnet publish -c Release -r ubuntu.16.04-x64`
+
+
 CLI arguments
 ==========================
 
@@ -27,3 +32,13 @@ CLI arguments
 | -i| Full path to input file| true |
 | -b| Name of the bank. This is case insensitive| true|
 | -o| Full path to output directory|true|
+
+Examples
+==========================
+On windows
+
+`FinnishYnabConverter.exe -i C:\input\mytransactions.csv -b Handelsbanken -o C:\output\`
+
+On linux
+
+`./FinnishYnabConverter -i /input/mytransactions.csv -b Handelsbanken -o /output/`
