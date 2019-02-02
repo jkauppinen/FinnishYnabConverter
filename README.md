@@ -22,8 +22,8 @@ Arguments
 ==========================
 
 
-| Argument| Description| 
-|-------------|-------------|
-| -i| Full path to input file| 
-| -b| Name of the bank. This is case insensitive|  
-| -o| Full path to output directory|   
+| Argument| Description| Required |
+|-------------|-------------|-------------|
+| -i| Full path to input file| true |
+| -b| Name of the bank. This is case insensitive| true|
+| -o| Full path to output directory|true|
