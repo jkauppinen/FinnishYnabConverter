@@ -4,7 +4,7 @@ FinnishYnabConverter
 Converts Finnish banks transaction files to YNAB compatible format. 
 
 * Verified to work with following banks formats
-  * Handelsbanken exported csv format
+  * Handelsbanken csv format
  
 
 How to use
