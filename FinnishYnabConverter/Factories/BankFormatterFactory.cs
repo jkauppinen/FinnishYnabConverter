@@ -1,10 +1,11 @@
-﻿using System;
-
-namespace FinnishYnabCvsConverter
+﻿namespace FinnishYnabConverter.Factories
 {
-    public static class FormatterFactory
+    using System;
+    using global::FinnishYnabConverter.Formatters;
+
+    public class BankFormatterFactory : IBankFormatterFactory
     {
-        public static IBankFormatter CreateBankFormatter(string bankname)
+        public IBankFormatter CreateBankFormatter(string bankname)
         {
             if (bankname.Equals("handelsbanken", StringComparison.OrdinalIgnoreCase))
             {

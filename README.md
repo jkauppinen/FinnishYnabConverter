@@ -1,4 +1,4 @@
-FinnishYnabCvsConverter
+FinnishYnabConverter
 ==========================
 
 Converts Finnish banks csv transaction files to YNAB compatible format. 
@@ -9,6 +9,8 @@ Converts Finnish banks csv transaction files to YNAB compatible format.
 
 How to use
 ==========================
+
+On windows
 ```
 finnish-ynab-csv-converter.exe -i C:\input\mytransactions.csv -b Handelsbanken -o C:\output\ 
 ```

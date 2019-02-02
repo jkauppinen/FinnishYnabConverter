@@ -1,33 +1,27 @@
-﻿using log4net;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace FinnishYnabCvsConverter
+﻿namespace FinnishYnabConverter.Formatters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+
     public class HandelsbankenFormatter : IBankFormatter
     {
-        public static ILog Log;
-
-        public HandelsbankenFormatter()
+        public void Format(string inputFilePath, string outputDir)
         {
-            Log = LogManager.GetLogger(this.GetType());
-        }
-
-        public void Format(string path, string outputPath)
-        {
-            if (!File.Exists(path))
+            if (!File.Exists(inputFilePath))
             {
-                Log.Debug("Could not find file with path: " + path);
+                throw new FileNotFoundException("File not found", inputFilePath);
             }
 
-            Log.Debug("Reading transactions to memory");
+            if (!Directory.Exists(outputDir))
+            {
+                throw new DirectoryNotFoundException($"Directory {outputDir} not found");
+            }
 
-            string[] transactions = File.ReadAllLines(path, Encoding.Default);
+            string[] transactions = File.ReadAllLines(inputFilePath, Encoding.Default);
             List<string> formattedTransactions = new List<string>();
 
-            Log.Debug("Formatting transactions");
             for (int i = 0; i < transactions.Length; i++)
             {
                 string formattedTransaction = "";
@@ -49,10 +43,10 @@ namespace FinnishYnabCvsConverter
                 }
                 formattedTransactions.Add(formattedTransaction);
             }
-            Log.Debug("Writing formatted transactions to " + outputPath);
-            string outputFileName = String.Format(outputPath + "Handelsbanken_transactions_{0}{1}{2}.csv", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            string formattedFileName = $"Handelsbanken_ynab_transactions_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}.csv";
+            string outputFilePath = Path.Combine(outputDir, formattedFileName);
 
-            using (TextWriter writer = new StreamWriter(outputFileName, true, new UTF8Encoding(false)))
+            using (TextWriter writer = new StreamWriter(outputFilePath, true, new UTF8Encoding(false)))
             {
                 writer.NewLine = "\n";
                 foreach (string formattedTransaction in formattedTransactions)
