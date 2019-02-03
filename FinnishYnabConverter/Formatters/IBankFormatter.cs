@@ -1,7 +1,9 @@
-﻿namespace FinnishYnabConverter.Formatters
+﻿
+namespace FinnishYnabConverter.Formatters
 {
+    using System.Collections.Generic;
     public interface IBankFormatter
     {
-        void Format(string inputFilePath, string outputDir);
+        ICollection<string> Format(string[] transactions);
     }
 }

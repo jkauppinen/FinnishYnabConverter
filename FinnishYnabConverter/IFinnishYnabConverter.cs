@@ -1,7 +1,9 @@
 namespace FinnishYnabConverter
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     public interface IFinnishYnabConverter
     {
-        void Start(string[] args);
+        Task Start(string[] args, CancellationToken cancellationToken);
     }
 }

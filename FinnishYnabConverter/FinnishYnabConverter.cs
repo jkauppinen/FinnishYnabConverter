@@ -7,31 +7,35 @@ namespace FinnishYnabConverter
     using global::FinnishYnabConverter.Configurations;
     using Microsoft.Extensions.Logging;
     using global::FinnishYnabConverter.Formatters;
+    using global::FinnishYnabConverter.Validators;
+    using System.Threading.Tasks;
+    using System.Threading;
+    using global::FinnishYnabConverter.Outputs;
 
     public class FinnishYnabConverter : IFinnishYnabConverter
     {
         IBankFormatterFactory _bankFormatterFactory;
-        ILogger _logger;
-
-        List<string> _supportedBanks = new List<string>()
+        IBankValidatorFactory _bankValidatorFactory;
+        IOutputProcessor _outputProcessor;
+        public FinnishYnabConverter(IBankFormatterFactory bankFormatterFactory,
+         IBankValidatorFactory bankValidatorFactory,
+         IOutputProcessor outputProcessor)
         {
-            "Handelsbanken"
-        };
-
-        public FinnishYnabConverter(ILoggerProvider loggerProvider, IBankFormatterFactory bankFormatterFactory)
-        {
-            _logger = loggerProvider.CreateLogger(nameof(FinnishYnabConverter));
             _bankFormatterFactory = bankFormatterFactory;
+            _bankValidatorFactory = bankValidatorFactory;
+            _outputProcessor = outputProcessor;
         }
 
-        public void Start(string[] args)
+        public async Task Start(string[] args, CancellationToken cancellationToken)
         {
             Parser.Default.ParseArguments<ConsoleArgumentConfiguration>(args)
-                   .WithParsed<ConsoleArgumentConfiguration>(o =>
+                   .WithParsed<ConsoleArgumentConfiguration>(o => 
                    {
-                       IBankFormatter formatter = _bankFormatterFactory.CreateBankFormatter(o.BankName);
-                       formatter.Format(o.InputFile, o.OutputDirectory);
-                       _logger.LogInformation("Transactions have been formatted to YNAB compatible format");
+                       InputFileInformation inputFileInformation = new InputFileInformation(o.BankName.Trim(), o.InputFile.Trim(), o.OutputDirectory.Trim());
+                       IBankValidator bankValidator = _bankValidatorFactory.CreateBankValidator(inputFileInformation);
+                       bankValidator.Validate(inputFileInformation);
+                       IBankFormatter formatter = _bankFormatterFactory.CreateBankFormatter(inputFileInformation.BankName);
+                       await _outputProcessor.Process(inputFileInformation, formatter, cancellationToken);
                    });
         }
     }

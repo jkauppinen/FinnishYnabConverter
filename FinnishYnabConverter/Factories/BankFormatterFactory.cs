@@ -7,12 +7,18 @@
     {
         public IBankFormatter CreateBankFormatter(string bankname)
         {
-            if (bankname.Equals("handelsbanken", StringComparison.OrdinalIgnoreCase))
+            if (bankname.Equals(SupportedBanks.Handelsbanken, StringComparison.OrdinalIgnoreCase))
             {
                 return new HandelsbankenFormatter();
             }
+            else if (bankname.Equals(SupportedBanks.OP, StringComparison.OrdinalIgnoreCase))
+            {
+                return new OPFormatter();
+            }
             else
-                throw new ArgumentException("Bank {0} is not supported");
+            {
+                throw new ArgumentException("Bank not supported",nameof(bankname));
+            }
         }
     }
 }

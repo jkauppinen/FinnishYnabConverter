@@ -7,21 +7,9 @@
 
     public class HandelsbankenFormatter : IBankFormatter
     {
-        public void Format(string inputFilePath, string outputDir)
+        public ICollection<string> Format(string[] transactions)
         {
-            if (!File.Exists(inputFilePath))
-            {
-                throw new FileNotFoundException("File not found", inputFilePath);
-            }
-
-            if (!Directory.Exists(outputDir))
-            {
-                throw new DirectoryNotFoundException($"Directory {outputDir} not found");
-            }
-
-            string[] transactions = File.ReadAllLines(inputFilePath, Encoding.Default);
             List<string> formattedTransactions = new List<string>();
-
             for (int i = 0; i < transactions.Length; i++)
             {
                 string formattedTransaction = "";
@@ -43,15 +31,7 @@
                 }
                 formattedTransactions.Add(formattedTransaction);
             }
-            string formattedFileName = $"Handelsbanken_ynab_transactions_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}.csv";
-            string outputFilePath = Path.Combine(outputDir, formattedFileName);
-
-            using (TextWriter writer = new StreamWriter(outputFilePath, true, new UTF8Encoding(false)))
-            {
-                writer.NewLine = "\n";
-                foreach (string formattedTransaction in formattedTransactions)
-                    writer.WriteLine(formattedTransaction);
-            }
+            return formattedTransactions;
         }
     }
 }
