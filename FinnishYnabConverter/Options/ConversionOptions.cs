@@ -38,7 +38,7 @@
             get
             {
                 return new List<Example>() {
-                    new Example("Convert file to a trendy format",
+                    new Example("Convert file to YNAB format",
                      new ConversionOptions("/home/john/transactions/mytransactions.csv",
                      "/home/john/transactions",
                      "OP"))

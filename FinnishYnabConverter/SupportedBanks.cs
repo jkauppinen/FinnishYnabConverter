@@ -6,6 +6,6 @@ namespace FinnishYnabConverter
     {
         public const string OP = "OP";
         public const string Handelsbanken = "Handelsbanken";
-        public static IEnumerable<string> Collection = new string[]{OP,Handelsbanken};
+        public static string[] Collection = new string[]{OP,Handelsbanken};
     }
 }

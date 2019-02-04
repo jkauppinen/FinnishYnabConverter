@@ -20,6 +20,7 @@ namespace FinnishYnabConverter
         IBankValidatorFactory _bankValidatorFactory;
         IOutputProcessorFactory _outputProcessorFactory;
         ILogger _logger;
+
         public FinnishYnabConverter(IBankConverterFactory bankFormatterFactory,
          IBankValidatorFactory bankValidatorFactory,
          IOutputProcessorFactory outputProcessorFactory,
@@ -70,18 +71,34 @@ namespace FinnishYnabConverter
 
         private void PrintSupportedBanks()
         {
-            foreach (var bank in SupportedBanks.Collection)
+            string banks = "";
+            for (int i = 0; i < SupportedBanks.Collection.Length; i++)
             {
-                _logger.LogInformation(bank);
+                if (i == SupportedBanks.Collection.Length - 1)
+                    banks += SupportedBanks.Collection[i];
+                else
+                    banks += SupportedBanks.Collection[i] + Environment.NewLine;
             }
+            _logger.LogInformation(banks);
         }
 
         private void PrintSupportedEncodings()
         {
-            foreach (var encoding in Encoding.GetEncodings())
+            var encodings = "";
+            var supportedEncodings = Encoding.GetEncodings();
+
+            for (int i = 0; i < supportedEncodings.Length; i++)
             {
-                _logger.LogInformation(encoding.Name);
+                if (i == supportedEncodings.Length - 1)
+                {
+                    encodings += supportedEncodings[i].Name;
+                }
+                else
+                {
+                    encodings += supportedEncodings[i].Name + Environment.NewLine;
+                }
             }
+            _logger.LogInformation(encodings);
         }
     }
 }
