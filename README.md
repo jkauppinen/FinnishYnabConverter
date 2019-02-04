@@ -25,5 +25,7 @@ Creating executable on linux
 
 Using
 ==========================
+
 To view available commands
+
 `FinnishYnabConverter --help`
