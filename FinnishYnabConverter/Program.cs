@@ -7,10 +7,8 @@
     using global::FinnishYnabConverter.Factories;
     using global::FinnishYnabConverter.Outputs;
 
-
     class Program
     {
-
         static void Main(string[] args)
         {
             var serviceCollection = new ServiceCollection();
@@ -48,7 +46,6 @@
                 .AddTransient<IFinnishYnabConverter, FinnishYnabConverter>()
                 .AddTransient<IOutputProcessor, TextProcessor>()
                 .BuildServiceProvider();
-
         }
     }
 }

@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    [Verb("convert",HelpText="Converts csv formatted transactions to YNAB format")]
+    [Verb("convert", HelpText = "Converts csv formatted transactions to YNAB format")]
     public class ConversionOptions
     {
         private readonly string _inputFile;
@@ -21,16 +21,16 @@
         }
 
         [Option('i', "input", Required = true, HelpText = "Input file containing transactions")]
-        public string InputFile { get {return _inputFile; } }
+        public string InputFile { get { return _inputFile; } }
 
         [Option('o', "output", Required = true, HelpText = "Output directory")]
-        public string OutputDirectory { get {return _outputDirectory; } }
+        public string OutputDirectory { get { return _outputDirectory; } }
 
         [Option('b', "bankname", Required = true, HelpText = "Name of your bank")]
-        public string BankName { get {return _bankName; } }
+        public string BankName { get { return _bankName; } }
 
         [Option('e', "encoding", Required = false, HelpText = "Encoding of the input file. Default it UTF-8 encoding.")]
-        public string InputFileEncoding { get {return _inputFileEncoding; } }
+        public string InputFileEncoding { get { return _inputFileEncoding; } }
 
         [Usage(ApplicationAlias = nameof(FinnishYnabConverter))]
         public static IEnumerable<Example> Examples

@@ -90,13 +90,9 @@ namespace FinnishYnabConverter
             for (int i = 0; i < supportedEncodings.Length; i++)
             {
                 if (i == supportedEncodings.Length - 1)
-                {
                     encodings += supportedEncodings[i].Name;
-                }
                 else
-                {
                     encodings += supportedEncodings[i].Name + Environment.NewLine;
-                }
             }
             _logger.LogInformation(encodings);
         }

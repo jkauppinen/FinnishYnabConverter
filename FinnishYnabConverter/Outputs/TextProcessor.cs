@@ -29,7 +29,6 @@ namespace FinnishYnabConverter.Outputs
                 foreach (string formattedTransaction in formattedTransactions)
                     writer.WriteLine(formattedTransaction);
             }
-
         }
     }
 }

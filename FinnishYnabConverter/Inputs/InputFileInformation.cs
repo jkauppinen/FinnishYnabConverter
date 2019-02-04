@@ -4,7 +4,7 @@ namespace FinnishYnabConverter.Inputs
 {
     public class InputFileInformation
     {
-        public InputFileInformation(string bankName,string inputFilePath, string outputDir, Encoding inputFileEncoding)
+        public InputFileInformation(string bankName, string inputFilePath, string outputDir, Encoding inputFileEncoding)
         {
             BankName = bankName;
             InputFilePath = inputFilePath;
@@ -12,7 +12,7 @@ namespace FinnishYnabConverter.Inputs
             InputFileEncoding = inputFileEncoding;
         }
         public string BankName { get; private set; }
-        public string InputFilePath {get; private set;}
+        public string InputFilePath { get; private set; }
         public string OutputDir { get; private set; }
         public Encoding InputFileEncoding { get; private set; }
     }

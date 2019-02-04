@@ -17,7 +17,7 @@
             }
             else
             {
-                throw new ArgumentException("Bank not supported",nameof(bankname));
+                throw new ArgumentException("Bank not supported", nameof(bankname));
             }
         }
     }
