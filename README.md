@@ -1,9 +1,10 @@
 FinnishYnabConverter
 ==========================
 
-Converts Finnish banks transaction files to YNAB compatible format. 
+Converts Finnish banks transaction files to YNAB 4 compatible format. 
 
 * Verified to work with following banks formats
+  * OP csv format
   * Handelsbanken csv format
 
 Target framework: .NET Core 2.2
