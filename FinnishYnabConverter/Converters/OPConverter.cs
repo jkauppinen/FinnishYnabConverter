@@ -1,13 +1,13 @@
-namespace FinnishYnabConverter.Formatters
+namespace FinnishYnabConverter.Converters
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
 
-    public class OPFormatter : IBankFormatter
+    public class OPConverter : IBankConverter
     {
-        public ICollection<string> Format(string[] transactions)
+        public ICollection<string> Convert(string[] transactions)
         {
             List<string> formattedTransactions = new List<string>();
 
@@ -25,7 +25,7 @@ namespace FinnishYnabConverter.Formatters
                     string test = splittedTransaction[5].Replace("\"", "");
                     formattedTransaction += splittedTransaction[5].Replace("\"", "") + ","; // Payee
                     formattedTransaction +=  ","; // Category as empty
-                    formattedTransaction += splittedTransaction[8] + ","; // Memo
+                    formattedTransaction += splittedTransaction[8].Replace(",",".") + ","; // Memo
 
                     // Inflow or outflow
                     formattedTransaction += splittedTransaction[2].Contains("-") ?

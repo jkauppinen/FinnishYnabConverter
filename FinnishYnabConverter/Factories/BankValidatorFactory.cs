@@ -1,6 +1,7 @@
 namespace FinnishYnabConverter.Factories
 {
     using System;
+    using global::FinnishYnabConverter.Inputs;
     using global::FinnishYnabConverter.Validators;
 
     public class BankValidatorFactory : IBankValidatorFactory

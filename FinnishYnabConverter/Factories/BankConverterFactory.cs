@@ -1,19 +1,19 @@
 ﻿namespace FinnishYnabConverter.Factories
 {
     using System;
-    using global::FinnishYnabConverter.Formatters;
+    using global::FinnishYnabConverter.Converters;
 
-    public class BankFormatterFactory : IBankFormatterFactory
+    public class BankConverterFactory : IBankConverterFactory
     {
-        public IBankFormatter CreateBankFormatter(string bankname)
+        public IBankConverter CreateBankFormatter(string bankname)
         {
             if (bankname.Equals(SupportedBanks.Handelsbanken, StringComparison.OrdinalIgnoreCase))
             {
-                return new HandelsbankenFormatter();
+                return new HandelsbankenConverter();
             }
             else if (bankname.Equals(SupportedBanks.OP, StringComparison.OrdinalIgnoreCase))
             {
-                return new OPFormatter();
+                return new OPConverter();
             }
             else
             {

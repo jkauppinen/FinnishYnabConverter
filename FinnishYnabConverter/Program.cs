@@ -5,7 +5,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using global::FinnishYnabConverter.Factories;
     using global::FinnishYnabConverter.Outputs;
-    using System.Threading;
 
     class Program
     {
@@ -17,24 +16,20 @@
                 {
                     o.AddConsole();
                 })
-                .AddTransient<IBankFormatterFactory, BankFormatterFactory>()
+                .AddTransient<IBankConverterFactory, BankConverterFactory>()
                 .AddTransient<IBankValidatorFactory, BankValidatorFactory>()
+                .AddTransient<IOutputProcessorFactory, OutputProcessorFactory>()
                 .AddTransient<IFinnishYnabConverter, FinnishYnabConverter>()
                 .AddTransient<IOutputProcessor, TextProcessor>()
                 .BuildServiceProvider();
 
             var logger = serviceProvider.GetService<ILoggerProvider>()
                 .CreateLogger(nameof(Program));
-                
+
             try
             {
-                var FinnishYnabConverter = serviceProvider.GetService<IFinnishYnabConverter>();
-
-                CancellationToken cancellationToken = CancellationToken.None;
-
-                FinnishYnabConverter.Start(args, cancellationToken)
-                .Wait(cancellationToken);
-
+                var finnishYnabConverter = serviceProvider.GetService<IFinnishYnabConverter>();
+                finnishYnabConverter.Start(args);
             }
             catch (Exception ex)
             {

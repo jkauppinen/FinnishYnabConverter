@@ -1,13 +1,13 @@
-﻿namespace FinnishYnabConverter.Formatters
+﻿namespace FinnishYnabConverter.Converters
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
 
-    public class HandelsbankenFormatter : IBankFormatter
+    public class HandelsbankenConverter : IBankConverter
     {
-        public ICollection<string> Format(string[] transactions)
+        public ICollection<string> Convert(string[] transactions)
         {
             List<string> formattedTransactions = new List<string>();
             for (int i = 0; i < transactions.Length; i++)

@@ -6,14 +6,20 @@ namespace FinnishYnabConverter.Outputs
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using global::FinnishYnabConverter.Formatters;
+    using global::FinnishYnabConverter.Converters;
+    using global::FinnishYnabConverter.Inputs;
 
     public class TextProcessor : IOutputProcessor
     {
-        public async Task Process(InputFileInformation inputFileInformation, IBankFormatter bankFormatter, CancellationToken cancellationToken)
+        public void Process(InputFileInformation inputFileInformation, IBankConverter bankConverter)
         {
-            string[] transactions = await File.ReadAllLinesAsync(inputFileInformation.InputFilePath, Encoding.Default, cancellationToken);
-            ICollection<string> formattedTransactions = bankFormatter.Format(transactions);
+            if (inputFileInformation == null)
+            {
+                throw new ArgumentNullException(nameof(inputFileInformation));
+            }
+
+            string[] transactions = File.ReadAllLines(inputFileInformation.InputFilePath, inputFileInformation.InputFileEncoding);
+            ICollection<string> formattedTransactions = bankConverter.Convert(transactions);
             string formattedFileName = $"{inputFileInformation.BankName}_ynab_transactions_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}.csv";
             string outputFilePath = Path.Combine(inputFileInformation.OutputDir, formattedFileName);
 

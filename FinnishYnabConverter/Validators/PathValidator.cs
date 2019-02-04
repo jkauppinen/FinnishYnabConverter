@@ -3,6 +3,7 @@ namespace FinnishYnabConverter.Validators
     using System;
     using System.Collections;
     using System.IO;
+    using global::FinnishYnabConverter.Inputs;
 
     public class PathValidator : IBankValidator
     {

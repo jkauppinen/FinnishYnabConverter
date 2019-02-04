@@ -2,12 +2,11 @@
 namespace FinnishYnabConverter.Outputs
 {
     using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using global::FinnishYnabConverter.Formatters;
+    using global::FinnishYnabConverter.Converters;
+    using global::FinnishYnabConverter.Inputs;
 
     public interface IOutputProcessor
     {
-        Task Process(InputFileInformation inputFileInformation, IBankFormatter bankFormatter, CancellationToken cancellationToken);
+        void Process(InputFileInformation inputFileInformation, IBankConverter bankConverter);
     }
 }
