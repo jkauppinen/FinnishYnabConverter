@@ -1,7 +1,8 @@
 FinnishYnabConverter
 ==========================
 
-Converts Finnish banks transaction files to YNAB 4 compatible format. 
+Converts csv transaction files to YNAB 4 compatible format. Most Finnish banks have ability to export your transactions to csv format from their web application. 
+
 
 * Verified to work with following bank formats
   * OP csv format 
