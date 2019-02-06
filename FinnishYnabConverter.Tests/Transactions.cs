@@ -37,6 +37,5 @@ namespace FinnishYnabConverter.Tests
             }
             return validTransactions;
         }
-
     }
 }
